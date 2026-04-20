@@ -16,9 +16,3 @@ int result = hamming_distance(str1, str2, shorter);
 printf("Hamming distance: %d\n", result);
 return 0;
 }
-
-Compile Code:
-gcc main.c hamming.s -o hamming_program
-
-Run Code:
-./hamming_program
