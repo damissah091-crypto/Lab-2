@@ -1,0 +1,32 @@
+Gas:
+.section .bss
+.lcomm buf1, 256 # buffer for string 1
+.lcomm buf2, 256 # buffer for string 2
+.section .text
+.global hamming_distance
+hamming_distance:
+# rdi = pointer to string 1
+# rsi = pointer to string 2
+# rdx = length of shorter string
+xor %rax, %rax # total hamming distance = 0
+xor %rcx, %rcx # loop counter = 0
+char_loop:
+cmp %rcx, %rdx # if counter == length, we are done
+je done
+mov (%rdi, %rcx, 1), %bl # grab byte from string 1
+xor (%rsi, %rcx, 1), %bl # XOR with byte from string 2
+mov $8, %r8b # check 8 bits
+loop:
+test $1, %bl
+jz skip
+inc %rax
+skip:
+shr $1, %bl
+dec %r8b
+jnz loop
+inc %rcx
+jmp char_loop
+done:
+ret
+
+Compiler Command: gcc -no-pie hamming_distance.s hamming.c -o task2
