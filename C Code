@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <string.h>
+extern int hamming_distance(char *s1, char *s2, int len);
+int main() {
+char str1[256], str2[256];
+printf("Enter string 1: ");
+fgets(str1, 256, stdin);
+str1[strcspn(str1, "\n")] = 0;
+printf("Enter string 2: ");
+fgets(str2, 256, stdin);
+str2[strcspn(str2, "\n")] = 0;
+int len1 = strlen(str1);
+int len2 = strlen(str2);
+int shorter = len1 < len2 ? len1 : len2;
+int result = hamming_distance(str1, str2, shorter);
+printf("Hamming distance: %d\n", result);
+return 0;
+}
+
+Compile Code:
+gcc main.c hamming.s -o hamming_program
+
+Run Code:
+./hamming_program
