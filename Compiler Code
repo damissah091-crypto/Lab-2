@@ -1,0 +1,2 @@
+Compiler Command: gcc -no-pie hamming_distance.s hamming.c -o task2
+Run Command: ./task2
