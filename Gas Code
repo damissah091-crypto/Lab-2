@@ -1,4 +1,3 @@
-Gas:
 .section .bss
 .lcomm buf1, 256 # buffer for string 1
 .lcomm buf2, 256 # buffer for string 2
